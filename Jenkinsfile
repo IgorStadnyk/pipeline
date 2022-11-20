@@ -1,27 +1,14 @@
-pipeline {
-    agent any
-    stages {
-        stage('fetching') {
-            steps {
-                sh ' echo fetching '
+pipeline{
+    agent {
+        docker {image 'node:16.13.1-alpine'}
+    }
+    stages{
+        stage("A"){
+            steps{
+                sh 'node --version'
             }
-        
-        }
-        stage('building') { 
-            steps {
-                echo 'building'
-            }
-        }
-        stage('testing') {
-            steps {
-                echo 'testing'
-            }
-        }
-        stage('deploying') {
-            steps {
-                echo ' deploying '
-            }
+
         }
     }
-    
+
 }
